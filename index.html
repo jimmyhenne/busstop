@@ -241,7 +241,7 @@
           minutes = intervall
         });
 
-      var bus-stops_info = new maplibregl.Popup({
+      var kita_info = new maplibregl.Popup({
         closeButton: false,
         closeOnClick: false
       });
@@ -250,14 +250,13 @@
         map.getCanvas().style.cursor = 'pointer';
         var coordinates = e.features[0].geometry.coordinates;
         feature = e.features[0].properties
-        var content = '<b>' + feature.name + '</b>'
-        + '<br>' + feature["STOP_NAME"]
-        bus-stops.setLngLat(coordinates).setHTML(content).addTo(map);
+        var content = '<b>' + feature.STOP_NAME + '</b>';
+        kita_info.setLngLat(coordinates).setHTML(content).addTo(map);
       });
 
       map.on('mouseleave', 'bus-stops', function () {
         map.getCanvas().style.cursor = '';
-        bus-stops.remove();
+        kita_info.remove();
       });
 
     });
