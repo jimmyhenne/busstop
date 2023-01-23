@@ -195,21 +195,16 @@
         }
       }, 'Gebaeude2D_alle');
 
-      map.addSource('kitas-nrw', {
-        'type': 'vector',
-        'tiles': [
-          'https://ogc-api.nrw.de/inspire-us-kindergarten/v1/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt'
-        ],
-        'minzoom': 10,
-        'maxzoom': 18
+      map.addSource('bus-stops', {
+        'type': 'geojson',
+        'data': 'https://jimmyhenne.github.io/busstop/geojson/bus-stops.geojson'
       });
 
       map.addLayer(
         {
-          'id': 'kitas-nrw',
+          'id': 'bus-stops',
           'type': 'circle',
-          'source': 'kitas-nrw',
-          'source-layer': 'governmentalservice',
+          'source': 'bus-stops',
           'paint': {
             'circle-color': '#000080',
             'circle-stroke-color': 'white',
