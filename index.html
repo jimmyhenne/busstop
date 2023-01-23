@@ -241,26 +241,23 @@
           minutes = intervall
         });
 
-      var kita_info = new maplibregl.Popup({
+      var bus-stops_info = new maplibregl.Popup({
         closeButton: false,
         closeOnClick: false
       });
 
-      map.on('mouseenter', 'kitas-nrw', function (e) {
+      map.on('mouseenter', 'bus-stops', function (e) {
         map.getCanvas().style.cursor = 'pointer';
         var coordinates = e.features[0].geometry.coordinates;
         feature = e.features[0].properties
         var content = '<b>' + feature.name + '</b>'
-        + '<br>' + feature["pointOfContact.address.thoroughfare"] + ' '  + feature["pointOfContact.address.locatorDesignator"]
-        + '<br>' + feature["pointOfContact.address.postCode"] + ' '  + feature["pointOfContact.address.adminUnit"]
-        + '<br><br>Telefon: ' + feature["pointOfContact.telephoneVoice"]
-        + '<br>Art: ' + feature["serviceType.title"];
-        kita_info.setLngLat(coordinates).setHTML(content).addTo(map);
+        + '<br>' + feature["STOP_NAME"]
+        bus-stops.setLngLat(coordinates).setHTML(content).addTo(map);
       });
 
-      map.on('mouseleave', 'kitas-nrw', function () {
+      map.on('mouseleave', 'bus-stops', function () {
         map.getCanvas().style.cursor = '';
-        kita_info.remove();
+        bus-stops.remove();
       });
 
     });
