@@ -186,7 +186,7 @@
             'interpolate',
             ['linear'],
             ['get', 'AA_MINS'],
-            1,
+            5,
             '#2b83ba',
             10,
             '#d7191c'
@@ -206,24 +206,26 @@
           'type': 'circle',
           'source': 'bus-stops',
           'paint': {
-            'circle-color': '#000080',
-            'circle-stroke-color': 'white',
-            'circle-stroke-width': 1.5
+			'circle-radius': 4,
+            'circle-color': '#f9f91f',
+            'circle-stroke-color': 'green',
+            'circle-stroke-width': 1.25
           }
         });
 
-      map.addSource('kreisgrenze', {
+      map.addSource('verbandsgrenze', {
         type: 'geojson',
         data: 'https://jimmyhenne.github.io/busstop/geojson/grenze_kreis.geojson'
       });
 
       map.addLayer({
-        'id': 'kreisgrenze',
+        'id': 'verbandsgrenze',
         'type': 'fill',
-        'source': 'kreisgrenze',
+        'source': 'verbandsgrenze',
         'paint': {
           'fill-color': 'white',
-          'fill-opacity': 0.7
+          'fill-opacity': 0.7,
+		  'fill-outline-color': '#000000'
         }
       });
 
@@ -250,7 +252,7 @@
         map.getCanvas().style.cursor = 'pointer';
         var coordinates = e.features[0].geometry.coordinates;
         feature = e.features[0].properties
-        var content = '<b>' + feature.STOP_NAME + '</b>';
+        var content = 'Bushaltestelle ' + '<br>' + '<b>' +feature.STOP_NAME + '</b>' ;
         kita_info.setLngLat(coordinates).setHTML(content).addTo(map);
       });
 
