@@ -68,7 +68,7 @@
     <div class="map-overlay-inner">
       <h2>Erreichbarkeit Bushaltestellen</h2>
       <label id="intervall"></label>
-      <input id="slider" type="range" min="5" max="10" step="5" value="5" autocomplete="off">
+      <input id="slider" type="range" min="3" max="12" step="3" value="0" autocomplete="off">
     </div>
   </div>
 
@@ -160,7 +160,7 @@
       map.getCanvas().style.cursor = ''
     })
 
-    var intervalle = [5, 10];
+    var intervalle = [3, 12];
 
     function filterBy(intervall) {
       var filters = ['==', 'AA_MINS', intervall];
@@ -186,9 +186,9 @@
             'interpolate',
             ['linear'],
             ['get', 'AA_MINS'],
-            5,
+            3,
             '#d75456',
-            10,
+            12,
             '#d7191c'
           ],
           'fill-opacity': 0.3
@@ -238,7 +238,7 @@
           if (popup.length) {
             popup[0].remove();
           }
-          var intervall = parseInt(e.target.value, 10);
+          var intervall = parseInt(e.target.value, 12);
           filterBy(intervall);
           minutes = intervall
         });
