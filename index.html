@@ -160,7 +160,7 @@
       map.getCanvas().style.cursor = ''
     })
 
-    var intervalle = [0, 3, 6, 9, 12];
+    var intervalle = [3, 6, 9, 12];
 
     function filterBy(intervall) {
       var filters = ['==', 'AA_MINS', intervall];
@@ -238,7 +238,7 @@
           if (popup.length) {
             popup[0].remove();
           }
-          var intervall = parseInt(e.target.value, 12);
+          var intervall = parseInt(e.target.value, 10);
           filterBy(intervall);
           minutes = intervall
         });
